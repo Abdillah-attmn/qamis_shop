@@ -46,7 +46,6 @@ gem "bootstrap", "~> 5.2"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
-gem "sass-embedded"
 
 
 group :development, :test do
@@ -74,5 +73,5 @@ group :test do
 end
 
 gem "tailwindcss-ruby", "~> 4.1"
-
 gem "tailwindcss-rails", "~> 4.2"
+gem "devise"
