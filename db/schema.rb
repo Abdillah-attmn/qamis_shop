@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_20_191703) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_16_185420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "order_date"
+    t.float "total_amont"
+    t.string "status"
+    t.string "shipping_address"
+    t.string "billing_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.float "price"
+    t.integer "stock_quantity"
+    t.string "category"
+    t.string "color"
+    t.string "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,4 +68,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_20_191703) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
+
+  add_foreign_key "orders", "users"
 end
