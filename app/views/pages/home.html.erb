@@ -1,5 +1,5 @@
 <section>
-  <div class="hero-wrap ftco-degree-bg" style="background-image: url(<%= asset_path "images.jpeg" %>);" data-stellar-background-ratio="0.5">
+  <div class="hero-wrap ftco-degree-bg" style="background-image: url(<%= asset_path "qamis-emirati.jpeg" %>);" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="flex flex-wrap max-md:h-[250px] h-[350px] items-center justify-center">
@@ -30,16 +30,19 @@
       <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         <% @products.each do |product| %>
           <div class="group relative">
-            <%= image_tag("https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg", alt:"Front of men&#039;s Basic Tee in black.", class: "aspect-square! w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80") %>
+            <%= image_tag("https://www.custom-qamis.com/32478-home_default/qamis-emirati-tissu-precious-noir-satine-col-bahraini-.webp", alt:"Front of men&#039;s Basic Tee in black.", class: "aspect-square! w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80") %>
             <div class="mt-4 flex justify-between">
               <div>
                 <h3 class="text-base! font-medium">
-                  <a href="#" class="no-underline! text-gray-700!">
+                  <%= link_to product_path(product),class:"no-underline! text-gray-700!" do %>
                     <span aria-hidden="true" class="absolute inset-0"></span>
                     <%= product.name %>
+                  <% end %>
+                  <a href="#" class="no-underline! text-gray-700!">
                   </a>
                 </h3>
-                <p class="mt-1 text-sm text-gray-500"><%= product.color %></p>
+                <p class="mt-1 mb-0 text-base text-gray-500 italic"><%= product.category %></p>
+                <p class="text-sm text-gray-500"><%= product.color %></p>
               </div>
               <p class="text-sm font-medium text-gray-900">$<%= product.price %></p>
             </div>
