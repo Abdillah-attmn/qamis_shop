@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = Product.where(size: @product.size)
+    @products = Product.where(category: @product.category)
   end
 
   private
