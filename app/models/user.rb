@@ -3,4 +3,11 @@ class User < ApplicationRecord
   # ,:confirmable, :lockable, :timeoutable, :trackableand :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # Validation
+  validates :firstname, uniqueness: {scope: :lastname}
+  validates :email, uniqueness: true
+
+  # Association
+  has_many :orders
 end

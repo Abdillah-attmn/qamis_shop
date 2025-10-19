@@ -1,21 +1,16 @@
-<header class="bg-white shadow" data-controller="burger-menu">
+<header class="bg-white fixed top-0 z-50 w-full transition duration-300 ease-in-out" data-controller="burger-menu">
   <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="relative z-10 flex px-2 lg:px-0">
         <div class="flex flex-shrink-0 items-center">
           <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
         </div>
-      </div>
-      <div class="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
-        <div class="grid w-full grid-cols-1 sm:max-w-xs">
-          <label for="search" class=sr-only>Search</label>
-          <div class=relative>
-            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" file="currentColor" aria-hidden=true>
-                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd"></path>
-              </svg>
-            </div>
-            <input id=Search name=Search placeholder=Search class="block w-full rounded-md border-0 bg-white py-2 text-base text-gray-900 pr-3 pl-10 outline -outline-offset-1 outline-gray-300 placeholder-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-600">
+        <div class="hidden lg:ml-6 lg:block">
+           <div class="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
+            <%= link_to "Accueil", root_path, class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm", aria: {current:"page"}  %>
+            <%= link_to "Nouveautés", "/#", class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm"%>
+            <%= link_to "Catégorie", "/#", class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm"%>
+            <%= link_to "Contact", "/#", class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm"%>
           </div>
         </div>
       </div>
@@ -25,7 +20,7 @@
                 class="relative inline-flex items-center justify-center rounded-md! p-2 text-gray-400 hover:bg-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700"
                 id="headlessui-disclosure-button-:r0:"
                 aria-controls="mobile-menu"
-                aria-expanded="false"
+                aria-expanded="true"
                 data-action="click->burger-menu#toogleMobileMenu">
           <span class="absolute inset-0.5"></span>
           <span class="sr-only">Open menu</span>
@@ -34,7 +29,7 @@
 
             Menu open: "hidden", Menu closed: "block"
           -->
-          <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="false" data-slot="icon" data-burger-menu-target="burger">
+          <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="false" data-slot="icon" data-burger-menu-target="burger">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
           <!--
@@ -42,7 +37,7 @@
 
             Menu open: "block", Menu closed: "hidden"
           -->
-          <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" data-burger-menu-target="cross">
+          <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" data-burger-menu-target="cross">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
@@ -50,7 +45,7 @@
       <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
         <% if user_signed_in? %>
           <!--div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"-->
-          <button type="button" class="relative rounded-full! bg-white p-1 text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500 focus:outline-hidden">
+          <button type="button" class="relative rounded-full! bg-white p-1 text-blue-400 hover:text-blue-500 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500 focus:outline-hidden">
             <span class="absolute -inset-1.5"></span>
             <span class="sr-only">View notifications</span>
             <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -96,30 +91,23 @@
               data-transition-leave-start="transform opacity-100 scale-100"
               data-transition-leave-end="transform opacity-0 scale-95">
               <!-- Active: "bg-gray-100 outline-hidden", Not Active: "" -->
-              <%= link_to "Your Profile","#", class:"block px-4 py-2 text-sm text-gray-700! no-underline!", role:"menuitem", id:"user-menu-item-0", tabindex:"-1"%>
-              <%= link_to "Settings", "#", class:"block px-4 py-2 text-sm text-gray-700! no-underline!", role:"menuitem", tabindex:"-1", id:"user-menu-item-1"%>
+              <%= link_to "Your Profile","/#", class:"block px-4 py-2 text-sm text-gray-700! no-underline!", role:"menuitem", id:"user-menu-item-0", tabindex:"-1"%>
+              <%= link_to "Settings", "/#", class:"block px-4 py-2 text-sm text-gray-700! no-underline!", role:"menuitem", tabindex:"-1", id:"user-menu-item-1"%>
               <%= link_to "Déconnecter", destroy_user_session_path, class:"block px-4 py-2 text-sm text-gray-700! no-underline!", role:"menuitem", tabindex:"-1", id:"user-menu-item-2", data: {turbo_method: :delete} %>
             </div>
           </div>
         <% else %>
-          <%= link_to "S'inscrire", new_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700! no-underline!" %>
-          <%= link_to "Connecter", new_user_session_path, class: "block px-4 py-2 text-sm text-gray-700! no-underline!" %>
+          <%= link_to "Se Connecter", new_user_session_path, class: "link_navbar block px-4 py-2 text-sm rounded-md no-underline!" %>
         <% end %>
       </div>
     </div>
-    <nav class="hidden lg:flex lg:space-x-8 lg:py-2" aria-label=Global>
-      <%= link_to "Accueil", root_path, class:"bg-gray-200 text-gray-900! inline-flex items-center rounded-md py-2 px-3 text-sm no-underline!" %>
-      <%= link_to "Nouveautés", "#", class:"text-gray-900! hover:bg-gray-100 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm no-underline!"%>
-      <%= link_to "Catégorie", "#", class:"text-gray-900! hover:bg-gray-100 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm no-underline!"%>
-      <%= link_to "Contact", "#", class:"text-gray-900! hover:bg-gray-100 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm no-underline!"%>
-    </nav>
   </div>
   <nav class=lg:hidden aria-label=Global id="mobile-menu" data-burger-menu-target="menu">
     <div class="space-y-2 px-2 pb-3 pt-2">
       <%= link_to "Accueil", root_path, class:"bg-gray-200 text-gray-600! block rounded-md py-2 px-3 text-base font-medium"%>
-      <%= link_to "Nouveautés","#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
-      <%= link_to "Catégorie","#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
-      <%= link_to "Contact","#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
+      <%= link_to "Nouveautés","/#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
+      <%= link_to "Catégorie","/#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
+      <%= link_to "Contact","/#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
     </div>
     <div class="border-t border-gray-200 pb-3 pt-4">
       <% if user_signed_in? %>
@@ -140,8 +128,8 @@
           </button>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <%= link_to "Profil","#", class:"block rounded-md px-3 py-2 text-base font-medium text-gray-700! hover:bg-gray-50 no-underline!", role:"menuitem", id:"user-menu-item-0", tabindex:"-1"%>
-          <%= link_to "Paramètres", "#", class:"block rounded-md px-3 py-2 text-base font-medium text-gray-700! hover:bg-gray-50 no-underline!", role:"menuitem", tabindex:"-1", id:"user-menu-item-1"%>
+          <%= link_to "Profil","/#", class:"block rounded-md px-3 py-2 text-base font-medium text-gray-700! hover:bg-gray-50 no-underline!", role:"menuitem", id:"user-menu-item-0", tabindex:"-1"%>
+          <%= link_to "Paramètres", "/#", class:"block rounded-md px-3 py-2 text-base font-medium text-gray-700! hover:bg-gray-50 no-underline!", role:"menuitem", tabindex:"-1", id:"user-menu-item-1"%>
           <%= link_to "Déconnecter", destroy_user_session_path, class:"block rounded-md px-3 py-2 text-base font-medium text-gray-700! hover:bg-gray-50 no-underline!", role:"menuitem", tabindex:"-1", id:"user-menu-item-2", data: {turbo_method: :delete}%>
         </div>
       <% else %>
