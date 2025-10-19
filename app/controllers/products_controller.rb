@@ -6,7 +6,9 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def show;end
+  def show
+    @products = Product.where(category: @product.category)
+  end
 
   private
 
