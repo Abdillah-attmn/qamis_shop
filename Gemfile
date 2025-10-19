@@ -58,7 +58,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
 end
 
 group :development do
@@ -76,3 +75,4 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.3"
 gem "devise"
 gem 'faker'
+gem "stripe"

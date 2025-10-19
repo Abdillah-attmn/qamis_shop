@@ -5,3 +5,14 @@ nav#mobile-menu {
     text-decoration-line: none;
   }
 }
+
+.link_navbar {
+  @apply text-base font-medium;
+  align-items: center;
+  text-decoration-line: none;
+  color: var(--color-gray-900) !important;
+  &:hover {
+    background-color: var(--color-blue-900);
+    color: var(--color-white) !important;
+  }
+}
