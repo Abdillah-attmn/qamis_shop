@@ -1,5 +1,6 @@
 // Specific CSS for your home-page
 @import "navbar";
+@import "footer";
 
 // Login Page
 
@@ -7,7 +8,7 @@
   input.btn.w-full {
     display: flex;
     justify-content: center;
-    background-color: var(--color-indigo-600);
+    background-color: var(--color-blue-900);
     border-radius: var(--radius-md);
     font-size: var(--text-sm);
     line-height: calc(var(--spacing) * 6);

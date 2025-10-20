@@ -1,0 +1,28 @@
+<footer class="bg-blue-900">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="flex justify-center space-x-6">
+      <div class="space-y-4">
+        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Company name" class="h-9 w-auto">
+        <p class="text-balance! text-sm text-gray-100!">
+          Votre boutique en ligne de qamis de qualité.
+        </p>
+      </div>
+      <div class="mt-16 gap-8 lg:gap-12">
+        <div class="mt-10 md:mt-0">
+          <h3 class="text-sm! font-semibold! text-white">A Propos</h3>
+          <ul class="mt-6 space-y-4 px-1">
+            <li><%= link_to "Livraison", "#", class:"font-size text-sm text-gray-100! no-underline!" %></li>
+            <li><%= link_to "Qui sommes-nous", "#", class:"font-size text-sm text-gray-100! no-underline!" %></li>
+            <li><%= link_to "Paiement sécurisé", "#", class:"font-size text-sm text-gray-100! no-underline!" %></li>
+            <li><%= link_to "Contactez-nous", "#", class:"font-size text-sm text-gray-100! no-underline!" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 border-t border-gray-400 pt-8 sm:mt-20">
+      <p class="text-center text-sm text-white">
+        &copy; <%= Time.current.year %> Qamis Shop. Tous droits réservés.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,12 +1,12 @@
-<header class="bg-white fixed top-0 z-50 w-full transition duration-300 ease-in-out" data-controller="burger-menu">
+<header class="bg-white border-b border-gray-200 fixed top-0 z-50 w-full transition duration-300 ease-in-out" data-controller="burger-menu">
   <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="relative z-10 flex px-2 lg:px-0">
         <div class="flex flex-shrink-0 items-center">
           <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
         </div>
-        <div class="hidden lg:ml-6 lg:block">
-           <div class="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
+        <div class="hidden md:ml-6 md:block">
+           <div class="hidden md:flex md:space-x-8 md:py-2" aria-label="Global">
             <%= link_to "Accueil", root_path, class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm", aria: {current:"page"}  %>
             <%= link_to "Nouveautés", "/#", class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm"%>
             <%= link_to "Catégorie", "/#", class:"link_navbar inline-flex rounded-md py-2 px-3 text-sm"%>
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="relative z-10 flex items-center lg:hidden">
+      <div class="relative z-10 flex items-center md:hidden">
         <!-- Mobile menu button -->
         <button type="button"
                 class="relative inline-flex items-center justify-center rounded-md! p-2 text-gray-400 hover:bg-white hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-700"
@@ -42,7 +42,7 @@
           </svg>
         </button>
       </div>
-      <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
+      <div class="hidden md:relative md:z-10 md:ml-4 md:flex md:items-center">
         <% if user_signed_in? %>
           <!--div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"-->
           <button type="button" class="relative rounded-full! bg-white p-1 text-blue-400 hover:text-blue-500 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500 focus:outline-hidden">
@@ -102,7 +102,7 @@
       </div>
     </div>
   </div>
-  <nav class=lg:hidden aria-label=Global id="mobile-menu" data-burger-menu-target="menu">
+  <nav class=md:hidden aria-label=Global id="mobile-menu" data-burger-menu-target="menu">
     <div class="space-y-2 px-2 pb-3 pt-2">
       <%= link_to "Accueil", root_path, class:"bg-gray-200 text-gray-600! block rounded-md py-2 px-3 text-base font-medium"%>
       <%= link_to "Nouveautés","/#", class:"text-gray-600! hover:bg-gray-100 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" %>
