@@ -1,24 +1,25 @@
 <!-- ===== Hero Section Start ===== -->
-<section class="relative bg-white z-10 overflow-hidden pb-20 pt-35 md:pt-40 lg:pb-25"
-         style="background: linear-gradient(53deg,rgba(255, 255, 255, 1) 63%, rgba(17, 57, 138, 0.93) 100%);">
-  <div class="hero-wrap">
-    <div class="container">
-      <div class="flex flex-wrap max-md:h-[250px] h-[350px] items-center justify-center">
-        <div class="w-full lg:w-7/12">
-          <div class="text w-full text-center md:mb-5 md:pb-5">
-            <header><h1 class="mb-4 text-blue-900! font-size text-lg">Trouver le qamis parfait pour vous</h1></header>
-            <p style="font-size: 18px;">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts</p>
-            <a href="https://vimeo.com/45830194" class="flex items-center mt-4 justify-center no-underline!">
-              <div class="icon flex items-center justify-center">
-                <span class="ion-ios-play"></span>
-              </div>
-              <%= link_to products_path, class:"bg-blue-200 ml-5 rounded-sm px-2 py-3 text-gray-900! no-underline!" do %>
-                <span class="hover:text-white">Voir la Boutique</span>
-              <% end %>
-            </a>
-          </div>
+<section class="relative z-10 overflow-hidden pb-10 pt-25 md:pt-20 lg:pb-15 bg-orange-50 md:bg-gradient-to-r md:from-orange-50 md:from-60% md:to-blue-950 md:to-40%" >
+  <div class="container">
+    <div class="grid md:grid-cols-5 gap-4 max-md:h-[250px] h-[350px] items-center justify-center">
+      <div class="md:col-span-3 max-md:mb-5">
+        <div class="text w-full text-center md:mb-5 md:pb-5">
+          <header><h1 class="mb-4 text-blue-950! font-size text-lg">Trouver le qamis parfait pour vous</h1></header>
+          <p style="font-size: 18px;" class="text-black mb-4 pb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts</p>
+          <a href="https://vimeo.com/45830194" class="flex items-center mt-4 justify-center no-underline!">
+            <div class="icon flex items-center justify-center">
+              <span class="ion-ios-play"></span>
+            </div>
+            <%= link_to products_path, class:"bg-amber-300 ml-5 rounded-sm px-2 py-3 text-white no-underline!" do %>
+              <span class="hover:text-white">Voir la Boutique</span>
+            <% end %>
+          </a>
         </div>
-        <div class="lg:w-5/12"></div>
+      </div>
+      <div class="hidden md:block md:col-span-2 bg-blue-950">
+        <div class="h-[300px] rounded-lg overflow-hidden m-auto">
+          <%= image_tag("https://www.custom-qamis.com/32478-home_default/qamis-emirati-tissu-precious-noir-satine-col-bahraini-.webp", alt:"Qamis Image", class:"w-full h-full object-cover rounded-lg") %>
+        </div>
       </div>
     </div>
   </div>
@@ -28,28 +29,31 @@
 <section>
   <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+      <h2 class="flex justify-center text-2xl font-bold tracking-tight text-gray-900">Aperçu des qamis</h2>
 
-      <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 xl:gap-x-8">
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 xl:gap-x-8">
         <% @products.each do |product| %>
-          <div class="group relative border border-blue-900! rounded-lg">
-            <%= image_tag("https://www.custom-qamis.com/32478-home_default/qamis-emirati-tissu-precious-noir-satine-col-bahraini-.webp", alt:"Front of men&#039;s Basic Tee in black.", class: "aspect-square! w-full rounded-t-lg bg-gray-200 object-cover lg:h-80") %>
+          <div class="group relative rounded-lg">
+            <%= image_tag("https://www.custom-qamis.com/32478-home_default/qamis-emirati-tissu-precious-noir-satine-col-bahraini-.webp", alt:"Front of men&#039;s Basic Tee in black.", class: "aspect-square! w-full rounded-t-lg group-hover:opacity-75 bg-gray-200 object-cover lg:h-80") %>
             <div class="mt-4 lg:max-2xl:px-2 flex justify-between">
               <div>
-                <h3 class="text-base! font-medium"><%= product.name %></h3>
+                <h3 class="text-base! font-medium">
+                  <%= link_to product_path(product), class:"no-underline! text-gray-700!" do %>
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    <%= product.name %>
+                  <% end %>
+                </h3>
                 <p class="mt-1 mb-0 text-base text-gray-500 italic"><%= product.category %></p>
                 <p class="text-sm text-gray-500"><%= product.color %></p>
               </div>
               <p class="text-sm font-medium text-gray-900"><%= product.price %> €</p>
             </div>
-            <div class="relative flex justify-center lg:max-2xl:px-2 mb-2">
-              <%= link_to "Voir en détails",product_path(product), class:"no-underline! text-gray-700! rounded-sm py-2 px-3 bg-blue-200!" %>
-            </div>
           </div>
         <% end %>
 
-
-        <!-- More products... -->
+      </div>
+      <div class="relative flex justify-center lg:max-2xl:px-2 mt-2">
+        <%= link_to "Voir plus de qamis",products_path, class:"no-underline! text-gray-700! rounded-sm py-2 px-3 bg-amber-300!" %>
       </div>
 
     </div>

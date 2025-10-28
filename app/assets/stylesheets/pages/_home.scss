@@ -8,7 +8,8 @@
   input.btn.w-full {
     display: flex;
     justify-content: center;
-    background-color: var(--color-blue-900);
+    background-color: var(--color-amber-300);
+    color: var(--color-gray-200);
     border-radius: var(--radius-md);
     font-size: var(--text-sm);
     line-height: calc(var(--spacing) * 6);

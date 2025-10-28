@@ -10,9 +10,9 @@ nav#mobile-menu {
   @apply text-base font-medium;
   align-items: center;
   text-decoration-line: none;
-  color: var(--color-gray-900) !important;
+  color: var(--color-gray-300) !important;
   &:hover {
-    background-color: var(--color-blue-900);
+    background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
     color: var(--color-white) !important;
   }
 }
