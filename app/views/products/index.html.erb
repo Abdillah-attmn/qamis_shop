@@ -350,7 +350,7 @@
 
       <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
         <!-- Filters -->
-        <%= form_with(url: products_path, method: :get, class: "hidden lg:block bg-blue-950 pt-6 ") do %>
+        <%= form_with(url: products_path, method: :get, data:{ turbo_frame:"products", controller: "filter"}, class: "hidden lg:block bg-blue-950 pt-6 ") do %>
           <h3 class="sr-only">Categories</h3>
           <ul role="list" class="space-y-4 border-b border-gray-200 pb-6">
             <li><a href="#" class="no-underline! text-sm font-medium text-white!">Totes</a></li>
@@ -360,18 +360,10 @@
             <li><a href="#" class="no-underline! text-sm font-medium text-white!">Laptop Sleeves</a></li>
           </ul>
 
-          <%= label_tag :category, "Catégories",
-                        class: "mx-2 my-2 text-white" %>
-          <%= select_tag :category,
-              options_for_select(Product::CATEGORIES,
-              selected: params[:category]),
-              include_blank: true,
-              class: 'rounded-md border-gray-300 bg-white mt-2 px-6 py-1 md:px-8 lg:px-10' %>
-
-          <div data-controller="disclosure" class="border-b border-gray-200 py-6 pl-2">
+          <div data-controller="disclosure" class="border-b border-gray-200 py-6">
             <h3 class="-my-3 flow-root">
               <button type="button" command="--toggle"
-                      data-action="click->disclosure#toggle"
+                      data-action="click->disclosure#categoryDisclosureMenu"
                       commandfor="filter-section-category"
                       class="flex w-full items-center justify-between py-3 px-3 text-xl! text-white hover:text-gray-300">
                 <span class="font-medium text-amber-300">Catégories</span>
@@ -386,19 +378,21 @@
               </button>
             </h3>
             <div data-disclosure-target="content" id="filter-section-category" class="block pt-6 hidden">
-              <div class="space-y-4">
-                <% Product::CATEGORIES.each do |category| %>
+              <div class="space-y-4 pl-3">
+                <% Product::CATEGORIES.each do |categorie| %>
                   <div class="flex gap-3">
                     <div class="flex h-5 shrink-0 items-center">
                       <div class="group grid size-4 grid-cols-1">
-                        <input id="filter-category-<%= Product::CATEGORIES.index(category) %>" type="checkbox" name="category[]" value="<%= category %>" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+                        <%= check_box_tag "categories[]", categorie, params[:categories]&.include?(categorie), data: { action: "filter#submit" }, class: "col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600! checked:bg-indigo-600! indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" %>
                         <svg viewBox="0 0 14 14" fill="none" class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25">
-                          <path d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-checked:opacity-100" />
-                          <path d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-indeterminate:opacity-100" />
+                          <path d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-checked:opacity-100!" />
+                          <path d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-has-indeterminate:opacity-100!" />
                         </svg>
                       </div>
                     </div>
-                    <label for="filter-category-0" class="text-base text-white"><%= category %></label>
+                    <label for="filter-category-<%= Product::CATEGORIES.index(categorie) %>" class="text-base text-white">
+                      <%= categorie %>
+                    </label>
                   </div>
                 <% end %>
               </div>
@@ -410,7 +404,16 @@
         <!-- Product grid -->
         <div class="container lg:col-span-3 mx-auto px-4">
           <!-- Your content -->
-          <%= render "list_product" %>
+          <%= turbo_frame_tag "products" do %>
+            <div class="mx-4 w-full">
+              <%= render "list_product" %>
+            </div>
+
+            <% if @products.empty? %>
+              <p>Aucun qamis disponible</p>
+            <% end %>
+          <% end %>
+
         </div>
       </div>
     </section>

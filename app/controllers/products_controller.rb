@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @products = @products.where(category: params[:category]) if params[:category].present?
+    @products = @products.where(category: params[:categories]) if params[:categories].present?
+
+    respond_to do |format|
+      format.html # vue normale
+      format.turbo_stream # mise à jour via turbo_frame
+    end
   end
 
   def show

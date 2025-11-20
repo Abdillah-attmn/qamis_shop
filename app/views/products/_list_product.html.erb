@@ -1,5 +1,5 @@
-<div class="mx-4 w-full">
-  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3 xl:gap-x-8">
+
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
     <% @products.each do |product| %>
       <div class="group relative rounded-lg">
         <%= image_tag("https://www.custom-qamis.com/32478-home_default/qamis-emirati-tissu-precious-noir-satine-col-bahraini-.webp", alt:"Front of men&#039;s Basic Tee in black.", class: "aspect-square! w-full rounded-t-lg group-hover:opacity-75 bg-gray-200 object-cover lg:h-80") %>
@@ -19,8 +19,3 @@
       </div>
     <% end %>
   </div>
-</div>
-
-<% if @product.empty? %>
-  <p>Aucun qamis disponible</p>
-<% end %>
