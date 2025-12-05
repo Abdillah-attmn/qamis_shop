@@ -360,18 +360,23 @@
             <li><a href="#" class="no-underline! text-sm font-medium text-white!">Laptop Sleeves</a></li>
           </ul>
 
-          <div data-controller="disclosure" class="border-b border-gray-200 py-6">
+          <!-- Category Filter Section -->
+          <div data-controller="disclosure" class="border-b border-gray-200">
             <h3 class="-my-3 flow-root">
               <button type="button" command="--toggle"
                       data-action="click->disclosure#categoryDisclosureMenu"
                       commandfor="filter-section-category"
                       class="flex w-full items-center justify-between py-3 px-3 text-xl! text-white hover:text-gray-300">
                 <span class="font-medium text-amber-300">Catégories</span>
+
                 <span class="ml-6 flex items-center">
-                  <svg data-disclosure-target="plus" viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="false" class="size-5 in-aria-expanded:hidden">
+                  <!-- Icône plus -->
+                  <svg data-disclosure-target="plus" viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="false" class="size-5">
                     <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
                   </svg>
-                  <svg data-disclosure-target="moins" viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 not-in-aria-expanded:hidden hidden">
+
+                  <!-- Icône moins -->
+                  <svg data-disclosure-target="moins" viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 hidden">
                     <path d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd" fill-rule="evenodd" />
                   </svg>
                 </span>
@@ -395,6 +400,52 @@
                     </label>
                   </div>
                 <% end %>
+              </div>
+            </div>
+
+            <!-- Price Filter Section -->
+            <h3 class="-my-3 flow-root">
+              <button type="button" command="--toggle"
+                      data-action="click->disclosure#priceDisclosureMenu"
+                      commandfor="filter-section-price"
+                      class="flex w-full items-center justify-between py-3 px-3 text-xl! text-white hover:text-gray-300">
+                <span class="font-medium text-amber-300">Prix</span>
+                <span class="ml-6 flex items-center">
+                  <svg data-disclosure-target="plus" viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="false" class="size-5">
+                    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+                  </svg>
+                  <svg data-disclosure-target="moins" viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 hidden">
+                    <path d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div data-disclosure-target="content" id="filter-section-price" class="block pt-6 hidden">
+              <div class="range-slider" data-controller="range">
+
+                <!-- Slider min -->
+                <div class="range">
+                  <label for="">Min :</label>
+                  <%= range_field_tag :min_price, params[:min_price] || 30,
+                                      in: 30..80, step: 5,
+                                      data: { action: "input->range#update", range_target: "min" },
+                                      class: "w-full pointer-events-none accent-amber-300" %>
+                  <span data-range-target="minOutput" class="text-white"><%= params[:min_price] || 30 %> €</span>
+                </div>
+
+                <!-- Slider max -->
+                <div class="range">
+                  <label for="">Max: </label>
+                  <%= range_field_tag :max_price, params[:max_price] || 80,
+                                      in: 30..80, step: 5,
+                                      data: { action: "input->range#update", range_target: "max" },
+                                      class: "w-full pointer-events-none accent-amber-300" %>
+                  <span data-range-target="maxOutput"><%= params[:max_price] || 80 %> €</span>
+                </div>
+
+                <!-- Affichage -->
+                <div class="mt-10 flex justify-between text-white">
+                </div>
               </div>
             </div>
           </div>

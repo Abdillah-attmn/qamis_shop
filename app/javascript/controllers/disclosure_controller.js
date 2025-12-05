@@ -8,19 +8,27 @@ export default class extends Controller {
     // console.log("Disclosure controller connected")
   }
 
-  toggle() {
-    this.contentTarget.classList.toggle("hidden")
-    this.plusTarget.classList.toggle("hidden")
-    this.moinsTarget.classList.toggle("hidden")
+  // Méthode pour le menu Prix
+  priceDisclosureMenu(event){
+    this.#toggleMenu(event);
   }
 
-  categoryDisclosureMenu(){
-    this.contentTarget.classList.toggle("hidden");
-    this.#checkMenu();
+  // Méthode pour le menu Catégorie
+  categoryDisclosureMenu(event){
+    this.#toggleMenu(event);
   }
 
-  #checkMenu(){
-    if (this.contentTarget.classList.contains("hidden")) {
+  #toggleMenu(event){
+    // Détection de l'élément ciblé
+    const sectionId = event.currentTarget.getAttribute("commandfor")
+    const section = document.getElementById(sectionId)
+
+    // Toggle de la section
+    section.classList.toggle("hidden");
+
+    // Gestion des icônes plus/moins
+
+    if (section.classList.contains("hidden")) {
       this.plusTarget.classList.remove("hidden");
       this.moinsTarget.classList.add("hidden");
 
@@ -28,11 +36,5 @@ export default class extends Controller {
       this.plusTarget.classList.add("hidden");
       this.moinsTarget.classList.remove("hidden");
     }
-  }
-
-  // Function which update aria-expanded
-  #toggleAriaExpanded() {
-    const isExpanded = this.menuTarget.classList.contains("hidden");
-    this.element.setAttribute("aria-expanded", !isExpanded);
   }
 }

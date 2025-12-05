@@ -4,7 +4,13 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
+    # Filtre Catégorie
     @products = @products.where(category: params[:categories]) if params[:categories].present?
+
+    # Filtre Prix
+    @products = @products.where("price >= ?", params[:min_price]) if params[:prices].present?
+    @products = @products.where("price <= ?", params[:max_price]) if params[:prices].present?
 
     respond_to do |format|
       format.html # vue normale
