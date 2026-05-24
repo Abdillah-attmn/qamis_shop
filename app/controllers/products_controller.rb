@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show]
 
   def index
-    @products = Product.all
+    @products = Product.order(created_at: :desc)
 
     # Filtre Catégorie
     @products = @products.where(category: params[:categories]) if params[:categories].present?

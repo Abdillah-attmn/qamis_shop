@@ -20,8 +20,10 @@ export default class extends Controller {
 
   #toggleMenu(event){
     // Détection de l'élément ciblé
-    const sectionId = event.currentTarget.getAttribute("commandfor")
-    const section = document.getElementById(sectionId)
+    const index = event.currentTarget.dataset.index
+    const section = this.contentTargets[index]
+    const plus = this.plusTargets[index]
+    const moins = this.moinsTargets[index]
 
     // Toggle de la section
     section.classList.toggle("hidden");
@@ -29,12 +31,12 @@ export default class extends Controller {
     // Gestion des icônes plus/moins
 
     if (section.classList.contains("hidden")) {
-      this.plusTarget.classList.remove("hidden");
-      this.moinsTarget.classList.add("hidden");
+      plus.classList.remove("hidden");
+      moins.classList.add("hidden");
 
     } else {
-      this.plusTarget.classList.add("hidden");
-      this.moinsTarget.classList.remove("hidden");
+      plus.classList.add("hidden");
+      moins.classList.remove("hidden");
     }
   }
 }
