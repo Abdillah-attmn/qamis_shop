@@ -9,8 +9,8 @@ class ProductsController < ApplicationController
     @products = @products.where(category: params[:categories]) if params[:categories].present?
 
     # Filtre Prix
-    @products = @products.where("price >= ?", params[:min_price]) if params[:prices].present?
-    @products = @products.where("price <= ?", params[:max_price]) if params[:prices].present?
+    @products = @products.where("price >= ?", params[:min_price]) if params[:min_price].present?
+    @products = @products.where("price <= ?", params[:max_price]) if params[:max_price].present?
 
     respond_to do |format|
       format.html # vue normale

@@ -7,12 +7,14 @@ export default class extends Controller {
   static targets = ["min", "max", "minOutput", "maxOutput"]
 
   update() {
-    const minValue = parseInt(this.minTarget.value)
-    const maxValue = parseInt(this.maxTarget.value)
+    let minValue = parseInt(this.minTarget.value)
+    let maxValue = parseInt(this.maxTarget.value)
 
     // Empêcher que min dépasse max
     if (minValue > maxValue) {
-      this.minTarget.value = maxValue
+      [minValue, maxValue] = [maxValue, minValue]
+      this.minTarget.value = minValue
+      this.maxTarget.value = maxValue
     }
 
     this.minOutputTarget.textContent = this.minTarget.value + " €"

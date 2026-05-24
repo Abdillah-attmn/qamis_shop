@@ -364,8 +364,9 @@
 
             <!-- Category Filter Section -->
             <h3 class="-my-3 flow-root">
-              <button type="button" data-index="0"
+              <button type="button" command="--toggle" data-index="0"
                       data-action="click->disclosure#categoryDisclosureMenu"
+                      commandfor="filter-section-category"
                       class="flex w-full items-center justify-between py-3 px-3 text-xl! text-white hover:text-gray-300">
                 <span class="font-medium text-amber-300">Catégories</span>
 
@@ -405,8 +406,9 @@
 
             <!-- Price Filter Section -->
             <h3 class="-my-3 flow-root">
-              <button type="button" data-index="1"
+              <button type="button" command="--toggle" data-index="1"
                       data-action="click->disclosure#priceDisclosureMenu"
+                      commandfor="filter-section-price"
                       class="flex w-full items-center justify-between py-3 px-3 text-xl! text-white hover:text-gray-300">
                 <span class="font-medium text-amber-300">Prix</span>
                 <span class="ml-6 flex items-center">
@@ -428,7 +430,7 @@
                   <%= range_field_tag :min_price, params[:min_price] || 30,
                                       in: 30..80, step: 5,
                                       data: { action: "input->range#update", range_target: "min" },
-                                      class: "w-full pointer-events-none accent-amber-300" %>
+                                      class: "w-full accent-amber-300" %>
                   <span data-range-target="minOutput" class="text-white"><%= params[:min_price] || 30 %> €</span>
                 </div>
 
@@ -438,7 +440,7 @@
                   <%= range_field_tag :max_price, params[:max_price] || 80,
                                       in: 30..80, step: 5,
                                       data: { action: "input->range#update", range_target: "max" },
-                                      class: "w-full pointer-events-none accent-amber-300" %>
+                                      class: "w-full accent-amber-300" %>
                   <span data-range-target="maxOutput"><%= params[:max_price] || 80 %> €</span>
                 </div>
 
