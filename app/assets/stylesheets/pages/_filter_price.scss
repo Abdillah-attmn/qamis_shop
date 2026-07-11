@@ -1,0 +1,59 @@
+.range-slider{
+  height: auto;   // adaptation à la taille du contenu
+  width: 100%;
+
+  .slider-track {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  .slider-controls {
+    position: relative;
+
+    // Cacher curseur par défaut du range input
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      background: transparent;
+      position: absolute;
+      top: 1em;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    // Customiser le curseur du range input
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 12px;
+      width: 12px;
+      background-color: var(--color-amber-300);
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: auto;
+      z-index: 3;
+      transform: translateY(-30%);
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 6px;
+    }
+
+    /**/
+    input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: white;
+      border: 3px solid #23a9f7;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: auto;
+      z-index: 3;
+      transform: translateY(-30%);
+    }
+
+  }
+
+}

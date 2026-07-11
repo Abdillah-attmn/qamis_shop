@@ -31,7 +31,7 @@
         <div class="lg:col-span-5 lg:col-start-8">
           <div class="flex justify-between">
             <p class="text-xl font-medium text-gray-900 mb-0"><%= @product.name %></p>
-            <p class="text-xl font-medium text-gray-900 mb-0"><%= @product.price %> €</p>
+            <p class="text-xl font-medium text-gray-900 mb-0"><%= sprintf("%.2f", @product.price) %> €</p>
           </div>
 
           <!-- Reviews -->
